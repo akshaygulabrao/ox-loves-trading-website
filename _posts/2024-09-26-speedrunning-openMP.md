@@ -44,7 +44,7 @@ all:
 	 -I/opt/homebrew/opt/libomp/include -lomp -lstdc++ main.cpp -o build/main
 ```
 And when you compile, you should get 
-![ex1b done](/ex1b.png)
+![ex1b done](/images/ex1b.png)
 
 FYI, this exercise took me about an hour because the Apple M1 Pro CMake does not automatically detect the openMP version so I had to go on stack overflow. 
 
@@ -129,9 +129,9 @@ After about 2 hours of struggling, and taking breaks, and minimal googling. I fi
     }
     pi = sum * step;
 ```
-The results are about what you would expect. The parallel version beats the serial version by about 1/2, which is suboptimal because 8 threads are being used. As you can see ![Figure 1](/serial_parallel_execution.png)
+The results are about what you would expect. The parallel version beats the serial version by about 1/2, which is suboptimal because 8 threads are being used. As you can see ![Figure 1](/images/serial_parallel_execution.png)
 
-In order to find the exactly how much more efficient parallel processing is, compare the speedup between the serial and parallel execution time. See that ![Figure 2](/speedup_steps.png).
+In order to find the exactly how much more efficient parallel processing is, compare the speedup between the serial and parallel execution time. See that ![Figure 2](/images/speedup_steps.png).
 
 As you get to the largest number steps (which contains the least amount of noise), the parallel code takes a large 41% percent of the time considering that it was given 8x the computational resources as the serial threading. The theoretically perfect performance is if the parallel version took 12.5% of the time compared to the serial version.
 
@@ -159,7 +159,7 @@ long double calculate_pi_atomic(long num_steps) {
 ```
 Unfortunately, it looks like this made our code worse because the operations inside the for loop aren't labor intensive enough, causing the biggest fight to be for the variable to update. I had to stop this iteration short because it would take way too long to finish because most of the time is spend for the threads fighting for permission to update sum.
 
-Comparing the efficiency metric similar to the previous exercise, the efficiency with the atomic instruction is horrible. ![Figure 3](/atomic_instructionpng.png)
+Comparing the efficiency metric similar to the previous exercise, the efficiency with the atomic instruction is horrible. ![Figure 3](/images/atomic_instructionpng.png)
 
 Parallel is 4x faster, atomic is 50x slower. It's not the perfect comparison because atomic instructions are good when the computation being done is far heavier than this case. The atomic case will not be included for the rest of the exercises due to the results ruining the scale for the other benchmarks.
 
@@ -181,7 +181,7 @@ long double calculate_pi_for_reduce(long num_steps) {
     return step * sum;
 }
 ```
-If there is an accumulated value inside a for loop (a reduction), then use the **for reduction**. The compiler finds better instructions containing the op, and uses those in each thread. This is much faster than the previous optimizations, and the results reflect that ![Figure 4](/for_reduce.png)
+If there is an accumulated value inside a for loop (a reduction), then use the **for reduction**. The compiler finds better instructions containing the op, and uses those in each thread. This is much faster than the previous optimizations, and the results reflect that ![Figure 4](/images/for_reduce.png)
 
 The Parallel For Reduce reached an efficiency of 59%, I thought I would be able to get to at least 75% efficiency. 60% efficiency seems rather low for me.
 
@@ -190,9 +190,19 @@ In other words, the speedup for parallel, is approximately 4.14 and the speedup 
 ### Further Work
 1. Compare the distribution of the actual cpu instructions used in the executable for the different functions. 
 2. Figure out if the 60% efficiency is due to clang's compiler being bad.
+### Synchronization: Barrier
+
+A **barrier** forces each thread to wait untill all threads arrive. By default, after every for loop there is an implicit *barrier*, that you can bypass with **pragma omp for nowait**.
+
+### Master construct
+Using **pragma omp master**, designate only the master thread to do the work. The master thread initiates and terminates parallel regions.
+
+### Single Construct
+**pragma omp single** can be used when one thread, not necessarily master, needs to do work
 
 ## Exercise 5: Monte Carlo Calculations
 
+First I am going to talk about a few extra commands that may end up useful later. 
 Here is the starter code that you will need
 ```c
 pi_mc.c
@@ -396,4 +406,110 @@ double drandom();
 void seed(double low_in, double hi_in);
 ```
 
-I actually accidentally saw the answer, but I'm not good enough at openMP that 2 seconds of looking at the answer compresses the information enough for it to be useful to me. What I did see was one **#pragma omp XXX private XXX reductionXX**. So now I just have to fill in the blanks. 
+I actually accidentally saw the answer, but I'm not good enough at openMP that 2 seconds of looking at the answer compresses the information enough for it to be useful to me. What I did see was one **#pragma omp XXX private XXX reductionXX**. So now I just have to fill in the blanks.
+
+So I am abandoning this exercise because I am seeing not speedup even after looking at the "solution". In fact the solution isn't numerically stable and around 30% slower. I don't know what happened. On my Mac M1 Pro, Single-Threaded takes ~2.1 seconds and Parallel takes ~2.6 seconds.
+
+## Exercise 6: hard, linked lists without tasks
+
+I didn't include the link for the exercises previously because exercise 5 included the answer by accident. However, this one does not and the starter code is in this [repository](https://github.com/tgmattso/OpenMP_intro_tutorial). I will also copy the starter code down below so that you don't need to go hunting for it on that site.
+
+```c
+linked.c
+#include <stdlib.h>
+#include <stdio.h>
+#include <omp.h>
+
+#ifndef N
+#define N 5
+#endif
+#ifndef FS
+#define FS 38
+#endif
+
+struct node {
+   int data;
+   int fibdata;
+   struct node* next;
+};
+
+int fib(int n) {
+   int x, y;
+   if (n < 2) {
+      return (n);
+   } else {
+      x = fib(n - 1);
+      y = fib(n - 2);
+	  return (x + y);
+   }
+}
+
+void processwork(struct node* p) 
+{
+   int n;
+   n = p->data;
+   p->fibdata = fib(n);
+}
+
+struct node* init_list(struct node* p) {
+    int i;
+    struct node* head = NULL;
+    struct node* temp = NULL;
+    
+    head = (struct node*)malloc(sizeof(struct node));
+    p = head;
+    p->data = FS;
+    p->fibdata = 0;
+    for (i=0; i< N; i++) {
+       temp  =  (struct node*)malloc(sizeof(struct node));
+       p->next = temp;
+       p = temp;
+       p->data = FS + i + 1;
+       p->fibdata = i+1;
+    }
+    p->next = NULL;
+    return head;
+}
+
+int main(int argc, char *argv[]) {
+     double start, end;
+     struct node *p=NULL;
+     struct node *temp=NULL;
+     struct node *head=NULL;
+     
+	 printf("Process linked list\n");
+     printf("  Each linked list node will be processed by function 'processwork()'\n");
+     printf("  Each ll node will compute %d fibonacci numbers beginning with %d\n",N,FS);      
+ 
+     p = init_list(p);
+     head = p;
+
+     start = omp_get_wtime();
+     {
+        while (p != NULL) {
+		   processwork(p);
+		   p = p->next;
+        }
+     }
+
+     end = omp_get_wtime();
+     p = head;
+	 while (p != NULL) {
+        printf("%d : %d\n",p->data, p->fibdata);
+        temp = p->next;
+        free (p);
+        p = temp;
+     }  
+	 free (p);
+fffƒƒƒ
+     printf("Compute Time: %f seconds\n", end - start);
+
+     return 0;
+}
+```
+Running the list synchronously, I get approximately 6 seconds runtime.
+![ex6_hard_single](/images/ex6_single.png)
+
+
+It wasn't immediately obvious to me how to parallelize a linked list. My idea was to multiple threads at the beginning of the linked list, each with `thread_id` offset. Then when a thread is finished processing, call $p=p.next$ `thread_num` times. However, there was only 5 nodes, so convert the linked list into an array, then use a parallel for loop to process the array. FYI, I did use chatGPT to implement this. I didn't want to be stuck getting trivial, obscure pointer code working. 
+![ex6_hard_parallel](/images/ex6_parallel.png)
