@@ -19,8 +19,7 @@ Experiences like this *could* happen all the time. If the world was actually eff
 
 Everyone's mental model of the world is obvious to them. For example, take the moment you learned addition (assuming you have a high-school math understanding). Usually numbers are taught first, then counting then addition. If your model of addition was perfect, the way you think about addition didn't change from 5th grade up until starting college. However, as you go through algebra, and calculus, you start filling things in that you didn't even know about addition. First, you think it's completely different. And then after a while, you realize that was just a small perturbation your notion of addition. As the model of the world becomes more robust, small differences in concepts stay as small differences.
 
-Yesterday at work, I was reading through documentation for a very popular video watching platform called VLC Player. Most people have heard of VLC Player as the free version whenever they want to watch a video on their computer (as if anyone even does that anymore). Not many people know this, but there is actually a way to stream a video over a local-area-network and watch the video like that. That is what happens when you watch a YouTube video. Google (they own YouTube) has a bunch of servers around the world that store all of the popular videos (the same ones on your feed). When you click it, it takes the video from a nearby 
-
+Yesterday at work, I was reading through documentation for a very popular video watching platform called VLC Player. Most people have heard of VLC Player as the free version whenever they want to watch a video on their computer (as if anyone even does that anymore). Not many people know this, but there is actually a way to stream a video over a local-area-network and watch the video like that. VLC Player allows users to stream videos over a local-area-network, a feature not widely known[^1].
 
 ## Neural Networks
 People go on assuming that everyone has the same mental models of the world, which can cause misunderstandings about ambiguous things. This is actually a legitimate concern regarding the training data of neural networks. The concern is that small perturbations in the image can cause large perturbations in the performance of the network. Ideally, small changes in state should imply a small change in your world model. Obviously, all the skill is in describing what "small" means, one of the few things that humans still have to do when describing the performance of a neural network. 
@@ -35,3 +34,7 @@ One of the biggest advantages of written communication is that it can losslessly
 
 ## Making the world more efficient
 
+asdfasfa
+
+
+[^1]: This functionality is similar to how YouTube videos are streamed from Google's servers distributed globally. If you want to know more about this stuff, I would recommend you start with [Edge Computing](https://en.wikipedia.org/wiki/Edge_computing).
