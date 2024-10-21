@@ -22,9 +22,7 @@ Everyone's mental model of the world is obvious to them. For example, take the m
 Yesterday at work, I was reading through documentation for a very popular video watching platform called VLC Player. Most people have heard of VLC Player as the free version whenever they want to watch a video on their computer (as if anyone even does that anymore). Not many people know this, but there is actually a way to stream a video over a local-area-network and watch the video like that. VLC Player allows users to stream videos over a local-area-network, a feature not widely known[^1].
 
 ## Neural Networks
-People go on assuming that everyone has the same mental models of the world, which can cause misunderstandings about ambiguous things. This is actually a legitimate concern regarding the training data of neural networks. The concern is that small perturbations in the image can cause large perturbations in the performance of the network. Ideally, small changes in state should imply a small change in your world model. Obviously, all the skill is in describing what "small" means, one of the few things that humans still have to do when describing the performance of a neural network. 
-
-One of the biggest advantages of written communication is that it can losslessly describe lossy compression. When you email a professor that you don't understand something, your are forced to make legible where exactly your black box of misunderstanding is. 
+Models should be just complex enough to accurately model the world, but not any more. To little complexity and y
 
 ## Actor-Critic Reinforcement learning
 
