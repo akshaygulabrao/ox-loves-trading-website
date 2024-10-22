@@ -32,7 +32,6 @@ Models should be just complex enough to accurately model the world, but not any 
 
 ## Making the world more efficient
 
-asdfasfa
 
 
 [^1]: This functionality is similar to how YouTube videos are streamed from Google's servers distributed globally. If you want to know more about this stuff, I would recommend you start with [Edge Computing](https://en.wikipedia.org/wiki/Edge_computing).
