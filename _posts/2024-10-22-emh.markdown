@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "EMH calms me down"
+date:   2024-10-22 10:00:00 -0400
+categories: finance trading
+---
+
+The Efficient Market Hypothesis (EMH) is one of the most controversial yet influential theories in financial economics. Developed by Eugene Fama in the 1960s, it suggests that market prices reflect all available information, making it impossible to consistently outperform the market through either technical or fundamental analysis. But is this really true? Let's dive deep into what EMH actually claims, its different forms, and why it matters for traders and investors.
