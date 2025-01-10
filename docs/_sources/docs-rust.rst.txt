@@ -1,0 +1,34 @@
+Rust Systems Programming
+===========================
+
+Rust is a systems programming language that prioritizes safety, speed, and concurrency. When building complex systems, two elements become critical: unit tests and documentation.
+
+Unit Tests as Zero-Knowledge Proofs
+-----------------------
+
+Unit tests function like zero-knowledge proofs in cryptography - they verify truth without requiring understanding of implementation details. Just as a zero-knowledge proof demonstrates validity without revealing the underlying secret, unit tests:
+
+* Prove code correctness without requiring readers to understand the implementation
+* Verify behavior through a formal, repeatable process
+* Demonstrate properties of the system without exposing internal complexity
+* Allow others to independently verify correctness
+* Build trust in the system through mathematical certainty
+
+Documentation as Information Compression
+------------------------------------
+
+Documentation functions as lossy compression of the codebase's knowledge. It compresses complex implementations into human-readable form, trading perfect accuracy for understanding speed. Good documentation:
+
+* Reduces the cognitive load of understanding the codebase
+* Provides quick insight into system behavior
+* Compresses implementation details into key concepts
+* Serves as a map for navigating the codebase
+
+These two elements work in harmony: tests provide formal verification of behavior, while documentation compresses that behavior into understandable concepts.
+
+LLM Context Window
+------------------
+
+Now that large language models are starting to make competent programmers, the importance of documentation and unit tests becomes more pronounced. Large language models famously struggle with context windows, so the more efficiently you can compress your codebase into documentation, the more useful the models becomes.
+
+This is combined with unit tests, which provide a formal verification of the codebase. Unit tests provide someone else a quick way to understand the codebase making interactions between developers more efficient. The interplay of the two become a useful 
