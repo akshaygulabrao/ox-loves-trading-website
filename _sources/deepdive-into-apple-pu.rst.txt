@@ -1,5 +1,5 @@
 Deepdive the Apple M1 Pro
-========================
+==========================
 
 Today I am going to do some more research into the way the Apple GPU works, and maybe verify some of the claims made about its performance. One of the most popular repos for benchmarking is `metal-benchmarks <https://github.com/philipturner/metal-benchmarks>`_, so let's start there and double-check his work.
 

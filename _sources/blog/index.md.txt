@@ -1,9 +1,0 @@
-# Blog Posts
-
-```{toctree}
-:maxdepth: 1
-:caption: Posts
-:glob:
-
-*
-``` 

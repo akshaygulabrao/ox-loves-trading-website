@@ -1,9 +1,9 @@
 Learning which features your Macbook M1 Pro Supports
-================================================
+=====================================================
 
 I want to explore how exactly the Apple M1 Pro chip instruction architecture to learn exactly what I am allowed to expect from my CPU. I eventually want to improve pytorch and tinygrad by helping them with shader kernels, and this is my very first step in getting my hands wet. 
 
-Apple provides beginner information about their ISA on their developer site `here <https://developer.apple.com/documentation/kernel/1387446-sysctlbyname/determining_instruction_set_characteristics>`_. It is a subset of the features available for all ARM processors, whose features can be found `here <https://developer.arm.com/documentation/ddi0487/latest>`_, in this 15k page PDF. 
+Apple provides beginner information about their ISA on their developer site `Apple ISA docs <https://developer.apple.com/documentation/kernel/1387446-sysctlbyname/determining_instruction_set_characteristics>`_. It is a subset of the features available for all ARM processors, whose features can be found `ARM docs <https://developer.arm.com/documentation/ddi0487/latest>`_, in this 15k page PDF. 
 
 To learn more about the instruction set architecture of the Apple M1 chip, I wrote a small script that outputs whether a features is enabled or not.
 

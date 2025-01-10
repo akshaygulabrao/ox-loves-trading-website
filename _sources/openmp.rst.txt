@@ -1,12 +1,12 @@
 Speedrunning with OpenMP
-====================
+=========================
 
 I am going to try and see if I can make it through the `Hands-on Introduction to OpenMP <https://www.openmp.org/wp-content/uploads/omp-hands-on-SC08.pdf>`_ in one day. The goal is to learn openMP, with no obsession about being a purist. Googling for help, asking ChatGPT is all allowed as long as I document where I needed help and what exactly it contributed.
 
 Disclaimer, I was introduced to what OpenMP was back in undergrad during our parallel programming class. Unfortunately, it was during COVID which made concentrating on the material very difficult. Anyways, I am not really starting from 0-experience with openMP because I have been exposed to many of the concepts and also am familiar with how operating systems work.
  
 Exercise 1: Hello world
-----------------------
+-------------------------
 
 Before we start learning openMP, we first need to get it working on this laptop. First, install with:
 
@@ -45,13 +45,13 @@ After nearly another hour, I realized that the CMake isn't good at finding openM
 
 And when you compile, you should get:
 
-.. image:: /images/ex1b.png
+.. image:: _images/ex1b.png
    :alt: ex1b done
 
 FYI, this exercise took me about an hour because the Apple M1 Pro CMake does not automatically detect the openMP version so I had to go on stack overflow.
 
 Exercise 2: Numerical Integration
--------------------------------
+----------------------------------
 
 We need to do a heavy numerical integration problem to confirm that running the program in multiple threads is indeed faster than just one thread. Basically, we approximate :math:`\pi` with:
 

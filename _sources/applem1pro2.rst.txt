@@ -1,5 +1,5 @@
 Learning which features your Macbook M1 Pro Supports
-===================================================
+=====================================================
 
 I want to explore how exactly the Apple M1 Pro chip instruction architecture to learn exactly what I am allowed to expect from my CPU. I eventually want to improve pytorch and tinygrad by helping them with shader kernels, and this is my very first step in getting my hands wet. 
 
@@ -60,5 +60,8 @@ In order to learn about the system, we can use ``systemctl -a`` and then observe
     comm -23 <(echo "$all_keys") <(echo "$writable_keys") | while read -r key; do
         echo "$key is not writable."
     done
+
+
+
 
 [Rest of the content follows the same pattern...] 
