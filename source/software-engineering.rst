@@ -18,5 +18,3 @@ Version Control
 --------------------------------------------
 
 Version control is the third pillar of software engineering. It is a version of evolution that experiments with code changes and iterates on them if they are successful, similar to how evolution experiments with genes and iterates on them if they are successful. Evolution usually has two versions of a species, one with stable genes and one with unstable genes. The unstable genes are used for experimentation, and if successful, the genes are added to the stable version.
-
-Version control makes it acceptable to be wrong. If you are wrong about the way to improve a codebase, you can experiment with the codebase and iterate on it. If you are right, you can merge your changes into the main branch. This allows for more experimentation and iteration, which is critical for large-scale applications.
