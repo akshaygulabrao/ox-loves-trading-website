@@ -11,4 +11,4 @@ That blank space of potential wasted with thoughtless negligence
 
 Years of potential which could have been salvaged
 
-With a few hours of discomfort
+With a few hours of planning

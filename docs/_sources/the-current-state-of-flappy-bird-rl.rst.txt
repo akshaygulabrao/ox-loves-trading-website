@@ -1,0 +1,4 @@
+Flappy Bird Reinforcement Learning
+======================================
+
+Flappy bird is a mobile game from 2013. It looks like this

@@ -6,11 +6,14 @@
 oxlovestrading 
 ============================
 
-I am 25 years old living in Chatsworth, California. I work on computer vision and robotics algorithms. I love programming and trading. I'm currently working on a trading algorithm that utilizes autoregressive transformers for price prediction on `Kalshi <https://kalshi.com>`_.
+I am unemployed with an MS in Computer Science and a BS in Computer Engineering from UC Riverside. I worked at Logos Technologies, for 2 years where I gained experience on topics in
 
-You may have stumbled upon this blog before, and noticed that I deleted all of my old posts. It's because I feel like the writing quality was sloppy and I don't want to keep them up, so it's better to just delete them and start fresh.
+- Motion Planning:  Built internal knowledge based on the work of `Tobia Marcucci's Thesis <https://groups.csail.mit.edu/robotics-center/public_papers/Marcucci24a.pdf>`_.
+- Object Detection: Deployed SSD object detection model on embedded hardware achieving a processing speed of 10 FPS, including data augmentation, data engineering, and rigorous testing to optimize performance.
 
-I am unemployed and looking to work on interesting and meaningful problems. You can see a real `resume <https://drive.google.com/file/d/1FmSUW62dGYqKGgQw3VZYzh89LChECEu7/view?usp=sharing>`_.
+
+
+
 
 
 .. toctree::
