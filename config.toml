@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://oxlovestrading.com"
+base_url = "https://akshaygulabrao.vercel.app/"
 title = "AkshayHatesEntropy"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
