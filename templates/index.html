@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ config.title }}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        ul { list-style: none; padding: 0; }
+        a { color: #0066cc; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>{{ config.title }}</h1>
+    <p>I love coding, LLMs, BJJ. I enjoy learning about information compression and game theory. </p>
+
+    <p>My favorite philosophers are Joscha Bach and Michael Levin for providing a mechanistic view of society, answering questions way better than my parents did.</p>
+
+    <p>I've recently gotten into writing because of its capacity for lossless information transfer and asynchronous communication, a trait that I have recently come to value.</p>
+
+    <ul>
+        {% for post in section.pages %}
+            <li>
+                <a href="{{ post.permalink }}">{{ post.title }}</a>
+                <small>({{ post.date | date(format="%Y-%m-%d") }})</small>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
